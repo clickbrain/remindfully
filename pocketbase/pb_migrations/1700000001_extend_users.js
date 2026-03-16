@@ -1,7 +1,3 @@
-/// migrate((db) => {
-///   // Extend the built-in users auth collection with Remindfully-specific fields
-/// })
-
 migrate((db) => {
   const dao = new Dao(db);
 

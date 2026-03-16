@@ -95,9 +95,15 @@ class FriendsNotifier extends StateNotifier<FriendsState> {
       state = state.copyWith(clearSearchResults: true);
       return;
     }
+    // Sanitize query to prevent filter injection: keep only alphanumeric, underscores, hyphens, dots
+    final sanitized = query.replaceAll(RegExp(r'[^\w.\-]'), '');
+    if (sanitized.isEmpty) {
+      state = state.copyWith(clearSearchResults: true);
+      return;
+    }
     try {
       final result = await _pb.client.collection('users').getList(
-            filter: 'username ~ "$query"',
+            filter: 'username ~ "$sanitized"',
             perPage: 10,
           );
       final users = result.items

@@ -39,7 +39,6 @@ class AppConstants {
 
   // SharedPreferences keys
   static const String prefAuthToken = 'auth_token';
-  static const String prefAuthModel = 'auth_model';
   static const String prefIsGuest = 'is_guest';
   static const String prefGuestPoints = 'guest_points';
   static const String prefGuestSessions = 'guest_sessions';

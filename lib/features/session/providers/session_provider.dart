@@ -175,7 +175,7 @@ class SessionNotifier extends StateNotifier<SessionState> {
     state = state.copyWith(
       phase: SessionPhase.missed,
       missedTaps: state.missedTaps + 1,
-      totalPoints: (state.totalPoints - penalty).clamp(0, double.maxFinite.toInt()),
+      totalPoints: (state.totalPoints - penalty).clamp(0, 999999999),
     );
     HapticFeedback.heavyImpact();
 
